@@ -7,7 +7,7 @@ ENV FILEBEAT_PKG_NAME filebeat-5.0.0-linux-x86_64
 RUN cd /usr/local && wget https://artifacts.elastic.co/downloads/beats/filebeat/$FILEBEAT_PKG_NAME.tar.gz
 RUN cd /usr/local && tar xvf $FILEBEAT_PKG_NAME.tar.gz && rm -f  $FILEBEAT_PKG_NAME.tar.gz
  RUN ln -s /usr/local/$FILEBEAT_PKG_NAME /usr/local/filebeat
-#COPY filebeat.yml  /usr/local/filebeat/
+COPY filebeat.yml  /usr/local/filebeat/
 
 ENV PACKETBEAT_PKG_NAME packetbeat-5.0.0-linux-x86_64
 RUN cd /usr/local && wget https://artifacts.elastic.co/downloads/beats/packetbeat/$PACKETBEAT_PKG_NAME.tar.gz
@@ -26,6 +26,10 @@ RUN cd /usr/local && wget https://download.elastic.co/beats/topbeat/$TOPBEAT_PKG
 RUN cd /usr/local && tar xvf $TOPBEAT_PKG_NAME.tar.gz && rm -f  $TOPBEAT_PKG_NAME.tar.gz
 RUN ln -s /usr/local/$TOPBEAT_PKG_NAME /usr/local/topbeat
 COPY topbeat.yml  /usr/local/topbeat/
+
+ENV DASHBOARD_PKG_NAME beats-dashboards-5.0.0
+RUN cd /usr/local && wget https://artifacts.elastic.co/downloads/beats/beats-dashboards/$DASHBOARD_PKG_NAME.zip
+RUN cd /usr/local && ln -s $DASHBOARD_PKG_NAME.zip beats-dashboard.zip
 
 RUN groupadd -r beats && useradd -r -gbeats beats
 RUN chown -R beats:beats /usr/local/filebeat*
