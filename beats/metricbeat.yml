@@ -69,6 +69,10 @@ output.elasticsearch:
   # Array of hosts to connect to.
   hosts: ["es.local:9200"]
 
+  template.name: "metricbeat"
+  template.path: "metricbeat.template.json"
+  template.overwrite: false
+
   # Optional protocol and basic auth credentials.
   #protocol: "https"
   #username: "elastic"

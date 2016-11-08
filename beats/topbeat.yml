@@ -42,6 +42,10 @@ output:
     # IPv6 addresses should always be defined as: https://[2001:db8::1]:9200
     hosts: ["es.local:9200"]
 
+    template.name: "topbeat"
+    template.path: "topbeat.template.json"
+    template.overwrite: false
+
     # Optional protocol and basic auth credentials.
     #protocol: "https"
     #username: "admin"
