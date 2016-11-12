@@ -1,4 +1,4 @@
-# nodejs-app-with-beats
+# nodejs-app
 
 An example nodejs app of using beats log shippers (filebeat, metricbeat, packetbeat), elasticsearch 
 and kibana.
@@ -30,7 +30,7 @@ $ curl -v http://localhost:8080/
 {"ok":"true","body":""}
 ```
 
-To see the app logs in Kibana, your browser to http://localhost:5601. 
+To see the app logs in Kibana, point your browser to http://localhost:5601. 
  
 
 
