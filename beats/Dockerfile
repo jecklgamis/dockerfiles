@@ -30,6 +30,7 @@ COPY topbeat.yml  /usr/local/topbeat/
 ENV DASHBOARD_PKG_NAME beats-dashboards-5.0.0
 RUN cd /usr/local && wget https://artifacts.elastic.co/downloads/beats/beats-dashboards/$DASHBOARD_PKG_NAME.zip
 RUN cd /usr/local && ln -s $DASHBOARD_PKG_NAME.zip beats-dashboard.zip
+COPY load-dashboards.sh /usr/local/bin
 
 RUN groupadd -r beats && useradd -r -gbeats beats
 RUN chown -R beats:beats /usr/local/filebeat*
