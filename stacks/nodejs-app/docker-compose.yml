@@ -1,0 +1,26 @@
+version: '2'
+services:
+  app:
+    build:
+      context: ./app
+    image: "app:latest"
+    links:
+    - "elasticsearch:es.local"
+    ports:
+    - 8080:8080
+  kibana:
+    image: jecklgamis/kibana:latest
+    ports:
+    - "5601:5601"
+    links:
+    - "elasticsearch:es.local"
+  elasticsearch:
+    image: jecklgamis/elasticsearch:latest
+    expose:
+    - "9200"
+    - "9300"
+  beat_dashboards:
+    image: jecklgamis/beats:latest
+    links:
+    - "elasticsearch:es.local"
+    command: /usr/local/bin/load-dashboards.sh http://es.local:9200
