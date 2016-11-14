@@ -9,7 +9,7 @@ fi
 ES_URL=$1
 
 function wait_for_es() {
-    local retries=5
+    local retries=10
     until $(curl --output /dev/null --silent --head --fail ${ES_URL}) ; do
         echo "Waiting for ${ES_URL}"
         sleep 5
