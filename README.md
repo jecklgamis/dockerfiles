@@ -10,6 +10,8 @@ These are all based on `ubuntu:latest` image and uses`supervisord` to start the 
 * logstash - Logstash (https://www.elastic.co/products/logstash) 
 * beats - Beats (https://www.elastic.co/products/beats) 
 * java-runtime - OpenJDK 8 JRE (http://openjdk.java.net)
+* oracle-java-runtime - Oracle JDK 8 (https://www.oracle.com/java/index.html)
 * nodejs-runtime - NodeJS (https://nodejs.org/en/)
 * mongodb - MongoDB (https://www.mongodb.com)
+* couchdb - CouchDB database server (http://couchdb.apache.org)
 
