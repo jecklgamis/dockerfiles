@@ -4,7 +4,7 @@ MAINTAINER Jerrico Gamis <jecklgamis@gmail.com>
 RUN apt-get update -y && apt-get install -y wget supervisor
 RUN groupadd -r tomcat && useradd -r -gtomcat tomcat
 
-ENV TOMCAT8_VERSION 8.5.8
+ENV TOMCAT8_VERSION 8.5.13
 ENV TOMCAT8_PKG_NAME apache-tomcat-$TOMCAT8_VERSION
 
 RUN cd /usr/local && wget http://apache.uberglobalmirror.com/tomcat/tomcat-8/v$TOMCAT8_VERSION/bin/$TOMCAT8_PKG_NAME.tar.gz
