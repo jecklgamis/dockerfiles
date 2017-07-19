@@ -19,7 +19,8 @@ RUN echo "elasticsearch.password: \"$ES_PASSWORD\"" | tee -a /usr/local/kibana/c
 RUN echo "server.host: \"0.0.0.0\"" | tee -a /usr/local/kibana/config/kibana.yml
 
 RUN groupadd -r kibana && useradd -r -gkibana kibana
-RUN chown -R kibana:kibana /usr/local/kibana*
+RUN chown -R kibana:kibana /usr/local/kibana/bin
+RUN chown -R kibana:kibana /usr/local/kibana/optimize
 
 RUN mkdir -p /var/log/supervisor
 COPY run-kibana.sh /usr/local/bin
