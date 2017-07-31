@@ -9,5 +9,10 @@ RUN mkdir -p /data/db /data/configdb && chown -R mongodb:mongodb /data/db /data/
 EXPOSE 27017
 
 COPY run-mongodb.sh /usr/local/bin
-CMD ["/usr/bin/supervisord"]
+
+CMD ["/usr/local/bin/run-mongodb.sh"]
+
+# Or use supervisor to start the app (see mongodb-supervisor.conf)
+#CMD ["/usr/bin/supervisord"]
+
 
