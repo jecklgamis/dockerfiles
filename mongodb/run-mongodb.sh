@@ -11,5 +11,5 @@ if [ -f /etc/default/${NAME} ] ; then
 fi
 . /lib/lsb/init-functions
 DAEMONUSER=${DAEMONUSER:-mongodb}
-DAEMON_OPTS=${DAEMON_OPTS:-"--unixSocketPrefix=$RUNDIR --config $CONF run"}
+DAEMON_OPTS=${DAEMON_OPTS:-"--unixSocketPrefix=$RUNDIR --smallfiles --config $CONF run"}
 exec ${DAEMON}
