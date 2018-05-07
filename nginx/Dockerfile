@@ -1,8 +1,7 @@
 FROM ubuntu:latest
 MAINTAINER Jerrico Gamis <jecklgamis@gmail.com>
 
-RUN apt-get update -y && apt-get install -y nginx supervisor
-COPY nginx-supervisor.conf /etc/supervisor/conf.d/
+RUN apt-get update -y && apt-get install -y nginx
 
 RUN mkdir -p /etc/nginx/ssl
 COPY etc/nginx/ssl/nginx.crt /etc/nginx/ssl/
@@ -14,5 +13,5 @@ COPY run-nginx.sh /usr/local/bin/
 EXPOSE 80
 EXPOSE 443
 
-CMD ["/usr/bin/supervisord"]
+CMD ["/usr/local/bin/run-nginx.sh"]
 
