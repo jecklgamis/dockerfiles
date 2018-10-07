@@ -1,6 +1,6 @@
 # dockerfiles
 
-These are all based on `ubuntu:latest` image and uses`supervisord` to start the services.
+These are all based on `ubuntu:18.04` image and uses`supervisord` to start the services.
 
 * apache2 - Apache 2 (http://httpd.apache.org)
 * nginx -  Nginx (http://www.nginx.org) 
