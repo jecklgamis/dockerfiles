@@ -1,6 +1,6 @@
 # dockerfiles
 
-These are all based on `ubuntu:18.04` image and uses`supervisord` to start the services.
+Docker containers based on `ubuntu:18.04`. 
 
 * apache2 - Apache 2 (http://httpd.apache.org)
 * nginx -  Nginx (http://www.nginx.org) 
@@ -14,6 +14,8 @@ These are all based on `ubuntu:18.04` image and uses`supervisord` to start the s
 * nodejs-runtime - NodeJS (https://nodejs.org/en/)
 * mongodb - MongoDB database server (https://www.mongodb.com)
 * couchdb - CouchDB database server (http://couchdb.apache.org)
+* prometheus - Prometheus server (http://prometheus.io/)
+* wiremock - WireMock standalone server (http://wiremock.org/)
 
 ## Running Images
 Example to build and run nginx image. 
