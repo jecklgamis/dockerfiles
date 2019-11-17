@@ -3,7 +3,7 @@ MAINTAINER Jerrico Gamis <jecklgamis@gmail.com>
 
 RUN apt-get update -y && apt-get install -y curl
 
-ENV WIREMOCK_VERSION 2.23.2
+ENV WIREMOCK_VERSION 2.25.1
 ENV WIREMOCK_HOME /usr/local/wiremock
 
 RUN mkdir -p ${WIREMOCK_HOME}
