@@ -1,7 +1,7 @@
 default:
 	cat ./Makefile
 
-IMAGES = java-runtime openjdk-8-jre, openjdk-11-jre nodejs-runtime \
+IMAGES = java-runtime openjdk-8-jre openjdk-11-jre nodejs-runtime \
          tomcat apache2 nginx \
          elasticsearch kibana beats logstash \
          mongodb redis couchdb \
