@@ -1,4 +1,4 @@
 #!/bin/bash
 set -ex
-exec /usr/local/elasticsearch/bin/elasticsearch
+exec ${ES_HOME}/bin/elasticsearch
 
