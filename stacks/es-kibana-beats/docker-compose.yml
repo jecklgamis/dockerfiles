@@ -3,16 +3,16 @@ services:
   kibana:
     image: jecklgamis/kibana:latest
     ports:
-    - "5601:5601"
+      - "5601:5601"
     links:
-    - "elasticsearch:es.local"
+      - "elasticsearch:es.local"
   elasticsearch:
     image: jecklgamis/elasticsearch:latest
     expose:
-    - "9200"
-    - "9300"
-  beat_dashboards:
+      - "9200"
+      - "9300"
+  beats:
     image: jecklgamis/beats:latest
     links:
-    - "elasticsearch:es.local"
-    command: /usr/local/bin/load-dashboards.sh http://es.local:9200
+      - "elasticsearch:es.local"
+      - "kibana:kibana.local"

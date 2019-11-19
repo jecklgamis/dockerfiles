@@ -1,50 +1,52 @@
-FROM jecklgamis/java-runtime:latest
+FROM ubuntu:18.04
 MAINTAINER Jerrico Gamis <jecklgamis@gmail.com>
 
-RUN apt-get update -y && apt-get install -y supervisor wget curl nodejs
+RUN apt-get update -y && apt-get install -y supervisor curl dumb-init
+RUN apt-get clean all
 
-ENV FILEBEAT_PKG_NAME filebeat-5.0.0-linux-x86_64
-RUN cd /usr/local && wget https://artifacts.elastic.co/downloads/beats/filebeat/$FILEBEAT_PKG_NAME.tar.gz
-RUN cd /usr/local && tar xvf $FILEBEAT_PKG_NAME.tar.gz && rm -f  $FILEBEAT_PKG_NAME.tar.gz
- RUN ln -s /usr/local/$FILEBEAT_PKG_NAME /usr/local/filebeat
-COPY filebeat.yml  /usr/local/filebeat/
+ENV BEATS_VERSION 7.4.2
 
-ENV PACKETBEAT_PKG_NAME packetbeat-5.0.0-linux-x86_64
-RUN cd /usr/local && wget https://artifacts.elastic.co/downloads/beats/packetbeat/$PACKETBEAT_PKG_NAME.tar.gz
-RUN cd /usr/local && tar xvf $PACKETBEAT_PKG_NAME.tar.gz && rm -f  $PACKETBEAT_PKG_NAME.tar.gz
-RUN ln -s /usr/local/$PACKETBEAT_PKG_NAME /usr/local/packetbeat
-COPY packetbeat.yml  /usr/local/packetbeat/
+RUN mkdir -p /usr/local/metricbeat
+WORKDIR /usr/local/metricbeat
+RUN curl -L -O https://artifacts.elastic.co/downloads/beats/metricbeat/metricbeat-$BEATS_VERSION-linux-x86_64.tar.gz && \
+    tar --strip-components=1  -xzvf metricbeat-$BEATS_VERSION-linux-x86_64.tar.gz && \
+    rm -f metricbeat-$BEATS_VERSION-linux-x86_64.tar.gz
+COPY metricbeat.yml /usr/local/metricbeat/
 
-ENV METRICBEAT_PKG_NAME metricbeat-5.0.0-linux-x86_64
-RUN cd /usr/local && wget https://artifacts.elastic.co/downloads/beats/metricbeat/$METRICBEAT_PKG_NAME.tar.gz
-RUN cd /usr/local && tar xvf $METRICBEAT_PKG_NAME.tar.gz && rm -f  $METRICBEAT_PKG_NAME.tar.gz
-RUN ln -s /usr/local/$METRICBEAT_PKG_NAME /usr/local/metricbeat
-COPY metricbeat.yml  /usr/local/metricbeat/
+RUN mkdir -p /usr/local/filebeat
+WORKDIR /usr/local/filebeat
+RUN curl -L -O https://artifacts.elastic.co/downloads/beats/filebeat/filebeat-$BEATS_VERSION-linux-x86_64.tar.gz && \
+    tar --strip-components=1  -xzvf filebeat-$BEATS_VERSION-linux-x86_64.tar.gz && \
+    rm -f filebeat-$BEATS_VERSION-linux-x86_64.tar.gz
+COPY filebeat.yml /usr/local/filebeat/
 
-ENV TOPBEAT_PKG_NAME topbeat-1.3.1-x86_64
-RUN cd /usr/local && wget https://download.elastic.co/beats/topbeat/$TOPBEAT_PKG_NAME.tar.gz
-RUN cd /usr/local && tar xvf $TOPBEAT_PKG_NAME.tar.gz && rm -f  $TOPBEAT_PKG_NAME.tar.gz
-RUN ln -s /usr/local/$TOPBEAT_PKG_NAME /usr/local/topbeat
-COPY topbeat.yml  /usr/local/topbeat/
+RUN mkdir -p /usr/local/packetbeat
+WORKDIR /usr/local/packetbeat
+RUN curl -L -O https://artifacts.elastic.co/downloads/beats/packetbeat/packetbeat-$BEATS_VERSION-linux-x86_64.tar.gz && \
+    tar --strip-components=1  -xzvf packetbeat-$BEATS_VERSION-linux-x86_64.tar.gz && \
+    rm -f packetbeat-$BEATS_VERSION-linux-x86_64.tar.gz
+COPY packetbeat.yml /usr/local/packetbeat/
 
-ENV DASHBOARD_PKG_NAME beats-dashboards-5.0.0
-RUN cd /usr/local && wget https://artifacts.elastic.co/downloads/beats/beats-dashboards/$DASHBOARD_PKG_NAME.zip
-RUN cd /usr/local && ln -s $DASHBOARD_PKG_NAME.zip beats-dashboard.zip
-COPY load-dashboards.sh /usr/local/bin
+RUN mkdir -p /usr/local/heartbeat
+WORKDIR /usr/local/heartbeat
+RUN curl -L -O https://artifacts.elastic.co/downloads/beats/heartbeat/heartbeat-$BEATS_VERSION-linux-x86_64.tar.gz && \
+    tar --strip-components=1  -xzvf heartbeat-$BEATS_VERSION-linux-x86_64.tar.gz && \
+    rm -f heartbeat-$BEATS_VERSION-linux-x86_64.tar.gz
+COPY heartbeat.yml /usr/local/heartbeat/
 
 RUN groupadd -r beats && useradd -r -gbeats beats
 RUN chown -R beats:beats /usr/local/filebeat*
 RUN chown -R beats:beats /usr/local/metricbeat*
-RUN chown -R beats:beats /usr/local/topbeat*
-RUN chown -R beats:beats /usr/local/packetbeat*
+RUN chown -R beats:beats /usr/local/heartbeat*
 
 RUN mkdir -p /var/log/supervisor
-COPY run-topbeat.sh /usr/local/bin
 COPY run-filebeat.sh /usr/local/bin
 COPY run-metricbeat.sh /usr/local/bin
 COPY run-packetbeat.sh /usr/local/bin
+COPY run-heartbeat.sh /usr/local/bin
 COPY beats-supervisor.conf /etc/supervisor/conf.d/
 
+ENTRYPOINT ["/usr/bin/dumb-init", "--"]
 CMD ["/usr/bin/supervisord"]
 
 
