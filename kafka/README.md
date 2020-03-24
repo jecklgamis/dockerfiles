@@ -1,8 +1,22 @@
 ## kafka
 
-A Docker container for Kafka cluster. 
+Apache Kafka Docker container.
 
-## Build and Run
+## Building
 ```
-make image run
+docker build -t jecklgamis/kafka:latest .
+```
+## Running
+```
+docker run -p 9092:9092  jecklgamis/kafka:latest
+```
+
+## Kafka  + Zookeeper  
+```
+docker-compose up
+```
+
+## Testing
+```
+telnet localhost 9092
 ```

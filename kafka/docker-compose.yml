@@ -2,6 +2,7 @@ version: '3'
 services:
   kafka:
     image: "jecklgamis/kafka"
+    ports:
       - 9092:9092
     links:
       - "zookeeper:zookeeper"
