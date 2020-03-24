@@ -16,6 +16,8 @@ Docker containers based on `ubuntu:18.04`.
 * couchdb - CouchDB database server (http://couchdb.apache.org)
 * prometheus - Prometheus server (http://prometheus.io/)
 * wiremock - WireMock standalone server (http://wiremock.org/)
+* kafka - Apache Kafka (https://kafka.apache.org/)
+* zookeeper - Apache Zookeeper (https://zookeeper.apache.org/)
 
 ## Running Images
 Example to build and run nginx image. 
