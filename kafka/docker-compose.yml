@@ -1,0 +1,11 @@
+version: '3'
+services:
+  kafka:
+    image: "jecklgamis/kafka"
+      - 9092:9092
+    links:
+      - "zookeeper:zookeeper"
+  zookeeper:
+    image: "jecklgamis/zookeeper"
+    ports:
+      - 2181:2181
