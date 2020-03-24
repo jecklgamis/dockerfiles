@@ -8,15 +8,15 @@ docker build -t jecklgamis/kafka:latest .
 ```
 ## Running
 ```
-docker run -p 9092:9092  jecklgamis/kafka:latest
+docker-compose up 
 ```
 
-## Kafka  + Zookeeper  
+Create a topic named `test` 
 ```
-docker-compose up
+make create-test-topic
 ```
 
-## Testing
+Open a console consumer on the `test` topic 
 ```
-telnet localhost 9092
+make start-test-consumer
 ```
