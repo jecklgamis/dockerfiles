@@ -1,9 +1,9 @@
 default:
 	cat ./Makefile
-image:
+image: ssl-certs
 	docker build -t jecklgamis/nginx:latest .
 run:
-	docker run -p 8080:80 -p 8443:443 -i -t jecklgamis/nginx:latest
+	docker run -p 80:80 -p 443:443 -i -t jecklgamis/nginx:latest
 run-bash:
 	docker run -i -t jecklgamis/nginx:latest /bin/bash
 ssl-certs:

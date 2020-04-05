@@ -6,6 +6,7 @@ IMAGES = java-runtime openjdk-8-jre openjdk-11-jre nodejs-runtime \
          elasticsearch kibana beats logstash \
          mongodb redis couchdb \
          prometheus grafana \
+         zookeeper kafka \
          wiremock
 
 image:
