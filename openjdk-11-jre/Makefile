@@ -7,4 +7,4 @@ run:
 run-bash:
 	docker run -i -t jecklgamis/openjdk-11-jre:latest /bin/bash
 push:
-	docker push -t jecklgamis/openjdk-11-jre:latest
+	docker push jecklgamis/openjdk-11-jre:latest
