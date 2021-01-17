@@ -1,9 +1,10 @@
-FROM jecklgamis/java-runtime:latest
+FROM jecklgamis/openjdk-8-jre
 MAINTAINER Jerrico Gamis <jecklgamis@gmail.com>
 
-RUN apt-get update -y && apt-get install -y curl build-essential
+RUN apt update -y && apt install -y curl build-essential
+RUN apt clean all
 
-ENV REDIS_PKG_NAME redis-4.0.9
+ENV REDIS_PKG_NAME redis-6.0.10
 
 RUN cd /usr/local && curl -O http://download.redis.io/releases/$REDIS_PKG_NAME.tar.gz
 RUN cd /usr/local && tar xvf $REDIS_PKG_NAME.tar.gz && rm -f  $REDIS_PKG_NAME.tar.gz

@@ -1,8 +1,8 @@
-FROM jecklgamis/java-runtime:latest
+FROM jecklgamis/openjdk-8-jre
 MAINTAINER Jerrico Gamis <jecklgamis@gmail.com>
 
-RUN apt-get update -y && apt-get install -y curl dumb-init
-RUN apt-get clean all
+RUN apt update -y && apt install -y curl dumb-init
+RUN apt clean all
 
 ENV ES_HOME /usr/local/elasticsearch
 ENV ES_PKG_NAME elasticsearch-7.4.2-linux-x86_64

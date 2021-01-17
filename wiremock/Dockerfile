@@ -1,9 +1,10 @@
-FROM jecklgamis/java-runtime:latest
+FROM jecklgamis/openjdk-8-jre
 MAINTAINER Jerrico Gamis <jecklgamis@gmail.com>
 
-RUN apt-get update -y && apt-get install -y curl
+RUN apt update -y && apt install -y curl
+RUN apt clean all
 
-ENV WIREMOCK_VERSION 2.25.1
+ENV WIREMOCK_VERSION 2.27.2
 ENV WIREMOCK_HOME /usr/local/wiremock
 
 RUN mkdir -p ${WIREMOCK_HOME}

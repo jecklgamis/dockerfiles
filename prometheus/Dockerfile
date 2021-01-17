@@ -1,9 +1,10 @@
-FROM jecklgamis/java-runtime:latest
+FROM jecklgamis/openjdk-8-jre
 MAINTAINER Jerrico Gamis <jecklgamis@gmail.com>
 
-RUN apt-get update -y && apt-get install -y curl
+RUN apt update -y && apt install -y curl
+RUN apt clean all
 
-ENV PROMETHEUS_VERSION 2.14.0
+ENV PROMETHEUS_VERSION 2.24.0
 ENV PROMETHEUS_HOME /usr/local/prometheus-${PROMETHEUS_VERSION}.linux-amd64
 
 RUN cd /usr/local && \

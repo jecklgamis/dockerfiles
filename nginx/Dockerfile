@@ -1,7 +1,8 @@
-FROM ubuntu:18.04
+FROM ubuntu:20.04
 MAINTAINER Jerrico Gamis <jecklgamis@gmail.com>
 
-RUN apt-get update -y && apt-get install -y nginx
+RUN apt update -y && apt install -y nginx
+RUN apt clean all
 
 RUN mkdir -p /etc/nginx/ssl
 COPY etc/nginx/ssl/nginx.crt /etc/nginx/ssl/

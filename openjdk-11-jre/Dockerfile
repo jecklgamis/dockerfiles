@@ -1,5 +1,7 @@
-FROM ubuntu:18.04
+FROM ubuntu:20.04
 MAINTAINER Jerrico Gamis <jecklgamis@gmail.com>
 
-RUN apt-get -y update && apt-get -y install openjdk-11-jre-headless
+RUN apt update -y && apt install -y openjdk-11-jre-headless
+RUN apt clean all
+
 CMD ["java","-version"]

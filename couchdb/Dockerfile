@@ -1,10 +1,11 @@
 FROM ubuntu:18.04
 MAINTAINER Jerrico Gamis <jecklgamis@gmail.com>
 
-RUN apt-get update -y && apt-get install -y curl dumb-init gnupg2
+RUN apt update -y && apt install -y curl dumb-init gnupg2
 RUN curl -L https://couchdb.apache.org/repo/bintray-pubkey.asc| apt-key add -
 RUN echo "deb https://apache.bintray.com/couchdb-deb bionic main" | tee -a /etc/apt/sources.list
-RUN apt-get update -y && apt-get install -y couchdb
+RUN apt update -y && apt install -y couchdb
+RUN apt clean all
 
 RUN mkdir -p /var/run/couchdb && chown -R couchdb:couchdb /var/run/couchdb
 RUN mkdir -p /var/log/couchdb && chown -R couchdb:couchdb /var/log/couchdb

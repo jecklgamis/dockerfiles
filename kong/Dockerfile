@@ -1,12 +1,13 @@
-FROM ubuntu:18.04
+FROM ubuntu:20.04
 MAINTAINER Jerrico Gamis <jecklgamis@gmail.com>
 
-RUN apt-get update -y && apt-get install -y curl dumb-init
-RUN apt-get update -y && apt-get install -y apt-transport-https curl lsb-core
+RUN apt update -y && apt install -y curl dumb-init
+RUN apt update -y && apt install -y apt-transport-https curl lsb-core
 RUN echo "deb https://kong.bintray.com/kong-deb `lsb_release -sc` main" |  tee -a /etc/apt/sources.list
 RUN curl -o bintray.key https://bintray.com/user/downloadSubjectPublicKey?username=bintray
 RUN apt-key add bintray.key
-RUN apt-get update -y && apt-get install -y kong
+RUN apt update -y && apt install -y kong
+RUN apt clean all
 
 COPY etc/kong/kong.conf /etc/kong
 COPY etc/kong/kong.yml /etc/kong

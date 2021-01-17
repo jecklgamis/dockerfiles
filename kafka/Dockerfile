@@ -1,9 +1,10 @@
 FROM jecklgamis/openjdk-8-jre:latest
 MAINTAINER Jerrico Gamis <jecklgamis@gmail.com>
 
-RUN apt-get update -y && apt-get install -y curl
+RUN apt update -y && apt install -y curl
+RUN apt clean all
 
-ENV KAFKA_VERSION 2.4.1
+ENV KAFKA_VERSION 2.7.0
 ENV KAFKA_HOME  /kafka
 
 RUN curl -H 'Cache-Control: no-cache' -fLO http://apache.mirror.serversaustralia.com.au/kafka/${KAFKA_VERSION}/kafka_2.12-${KAFKA_VERSION}.tgz && \

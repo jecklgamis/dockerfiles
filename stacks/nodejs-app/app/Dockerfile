@@ -1,7 +1,7 @@
 FROM jecklgamis/beats:latest
 MAINTAINER Jerrico Gamis <jecklgamis@gmail.com>
 
-RUN apt-get update -y && apt-get install -y supervisor curl nodejs
+RUN apt update -y && apt install -y supervisor curl nodejs
 
 COPY http-server.js /usr/local/app/bin/
 COPY app-supervisor.conf /etc/supervisor/conf.d/

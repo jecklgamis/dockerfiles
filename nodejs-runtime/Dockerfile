@@ -1,4 +1,6 @@
-FROM ubuntu:18.04
+FROM ubuntu:20.04
 
-RUN apt-get -y update && apt-get -y install nodejs
+RUN apt -y update && apt -y install nodejs
+RUN apt clean all
+
 CMD ["nodejs","--version"]

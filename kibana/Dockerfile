@@ -1,11 +1,11 @@
-FROM jecklgamis/java-runtime:latest
+FROM jecklgamis/openjdk-8-jre
 MAINTAINER Jerrico Gamis <jecklgamis@gmail.com>
 
-RUN apt-get update -y && apt-get install -y curl dumb-init
-RUN apt-get update -y && apt-get install -y fontconfig
-RUN apt-get clean all
+RUN apt update -y && apt install -y curl dumb-init
+RUN apt update -y && apt install -y fontconfig
+RUN apt clean all
 
-ENV KIBANA_PKG_NAME kibana-7.4.2-linux-x86_64
+ENV KIBANA_PKG_NAME kibana-7.10.2-linux-x86_64
 RUN groupadd -r kibana && useradd -r -gkibana kibana
 
 ENV KIBANA_HOME /usr/local/kibana

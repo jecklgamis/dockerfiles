@@ -1,6 +1,6 @@
 # dockerfiles
 
-Docker containers based on `ubuntu:18.04`. 
+Docker containers based on `ubuntu:20.04`. 
 
 * apache2 - Apache 2 (http://httpd.apache.org)
 * nginx -  Nginx (http://www.nginx.org) 

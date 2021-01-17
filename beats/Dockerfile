@@ -1,10 +1,10 @@
-FROM ubuntu:18.04
+FROM ubuntu:20.04
 MAINTAINER Jerrico Gamis <jecklgamis@gmail.com>
 
-RUN apt-get update -y && apt-get install -y supervisor curl dumb-init
-RUN apt-get clean all
+RUN apt update -y && apt install -y supervisor curl dumb-init
+RUN apt clean all
 
-ENV BEATS_VERSION 7.4.2
+ENV BEATS_VERSION 7.10.2
 
 RUN mkdir -p /usr/local/metricbeat
 WORKDIR /usr/local/metricbeat
