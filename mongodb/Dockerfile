@@ -1,8 +1,7 @@
-FROM jecklgamis/openjdk-8-jre
+FROM ubuntu:20.04
 MAINTAINER Jerrico Gamis <jecklgamis@gmail.com>
 
-RUN apt update -y && apt install -y mongodb
-RUN apt clean all
+RUN apt update -y && apt install -y mongodb && apt clean all && rm -rf /var/lib/apt/lists/*
 
 COPY mongodb-supervisor.conf /etc/supervisor/conf.d/
 
