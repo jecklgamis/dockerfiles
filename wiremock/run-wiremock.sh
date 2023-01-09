@@ -18,5 +18,5 @@ JAVA_OPTS="-server \
 -Xms1G \
 -Xmx1G"
 
-JAVA_OPTS="-cp ${WIREMOCK_HOME}/wiremock-standalone-${WIREMOCK_VERSION}.jar ${JAVA_OPTS}"
+JAVA_OPTS="-cp ${WIREMOCK_HOME}/wiremock-jre8-standalone-${WIREMOCK_VERSION}.jar ${JAVA_OPTS}"
 exec java ${JAVA_OPTS} com.github.tomakehurst.wiremock.standalone.WireMockServerRunner ${WIREMOCK_ARGS}
