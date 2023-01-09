@@ -1,10 +1,9 @@
-FROM jecklgamis/openjdk-8-jre
+FROM ubuntu:22.04
 MAINTAINER Jerrico Gamis <jecklgamis@gmail.com>
 
-RUN apt update -y && apt install -y curl build-essential
-RUN apt clean all
+RUN apt update -y && apt install -y curl build-essential && apt clean all
 
-ENV REDIS_PKG_NAME redis-6.0.10
+ENV REDIS_PKG_NAME redis-7.0.7
 
 RUN cd /usr/local && curl -O http://download.redis.io/releases/$REDIS_PKG_NAME.tar.gz
 RUN cd /usr/local && tar xvf $REDIS_PKG_NAME.tar.gz && rm -f  $REDIS_PKG_NAME.tar.gz
