@@ -1,11 +1,9 @@
-FROM jecklgamis/openjdk-8-jre
+FROM ubuntu:22.04
 MAINTAINER Jerrico Gamis <jecklgamis@gmail.com>
 
-RUN apt update -y && apt install -y curl dumb-init
-RUN apt update -y && apt install -y fontconfig
-RUN apt clean all
+RUN apt update -y && apt install -y curl dumb-init fontconfig openjdk-8-jre-headless && apt clean all && rm -rf /var/lib/apt/lists/*
 
-ENV KIBANA_PKG_NAME kibana-7.10.2-linux-x86_64
+ENV KIBANA_PKG_NAME kibana-8.5.3-linux-x86_64
 RUN groupadd -r kibana && useradd -r -gkibana kibana
 
 ENV KIBANA_HOME /usr/local/kibana
