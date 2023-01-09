@@ -1,10 +1,9 @@
-FROM jecklgamis/openjdk-8-jre:latest
+FROM ubuntu:22.04
 MAINTAINER Jerrico Gamis <jecklgamis@gmail.com>
 
-RUN apt update -y && apt install -y curl
-RUN apt clean all
+RUN apt update -y && apt install -y curl openjdk-8-jre-headless && apt clean all && rm -rf /var/lib/apt/lists/*
 
-ENV ZOOKEEPER_VERSION 3.6.2
+ENV ZOOKEEPER_VERSION 3.8.0
 ENV ZOOKEEPER_HOME /zookeeper
 
 RUN curl -H 'Cache-Control: no-cache'  -fLO  https://downloads.apache.org/zookeeper/zookeeper-${ZOOKEEPER_VERSION}/apache-zookeeper-${ZOOKEEPER_VERSION}-bin.tar.gz && \
