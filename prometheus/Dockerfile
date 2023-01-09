@@ -1,10 +1,9 @@
-FROM jecklgamis/openjdk-8-jre
+FROM ubuntu:22.04
 MAINTAINER Jerrico Gamis <jecklgamis@gmail.com>
 
-RUN apt update -y && apt install -y curl
-RUN apt clean all
+RUN apt update -y && apt install -y curl && apt clean all && rm -rf /var/lib/apt/lists/*
 
-ENV PROMETHEUS_VERSION 2.24.0
+ENV PROMETHEUS_VERSION 2.41.0
 ENV PROMETHEUS_HOME /usr/local/prometheus-${PROMETHEUS_VERSION}.linux-amd64
 
 RUN cd /usr/local && \
