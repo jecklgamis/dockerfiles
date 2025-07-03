@@ -1,5 +1,5 @@
 FROM ubuntu:20.04
-MAINTAINER Jerrico Gamis <jecklgamis@gmail.com>
+LABEL org.opencontainers.image.authors="Jerrico Gamis <jecklgamis@gmail.com>"
 
 RUN apt update -y && apt install -y curl dumb-init
 RUN apt update -y && apt install -y apt-transport-https curl lsb-core

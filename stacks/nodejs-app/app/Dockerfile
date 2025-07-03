@@ -1,5 +1,5 @@
 FROM jecklgamis/beats:latest
-MAINTAINER Jerrico Gamis <jecklgamis@gmail.com>
+LABEL org.opencontainers.image.authors="Jerrico Gamis <jecklgamis@gmail.com>"
 
 RUN apt update -y && apt install -y supervisor curl nodejs
 

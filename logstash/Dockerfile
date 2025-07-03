@@ -1,5 +1,5 @@
 FROM jecklgamis/openjdk-8-jre
-MAINTAINER Jerrico Gamis <jecklgamis@gmail.com>
+LABEL org.opencontainers.image.authors="Jerrico Gamis <jecklgamis@gmail.com>"
 
 RUN apt update -y && apt install -y curl
 RUN apt clean all

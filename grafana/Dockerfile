@@ -1,5 +1,5 @@
-FROM ubuntu:22.04
-MAINTAINER Jerrico Gamis <jecklgamis@gmail.com>
+FROM ubuntu:24.04
+LABEL org.opencontainers.image.authors="Jerrico Gamis <jecklgamis@gmail.com>"
 
 RUN apt update -y && apt install -y curl && apt clean all && rm -rf /var/lib/apt/lists/*
 

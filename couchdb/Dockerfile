@@ -1,5 +1,5 @@
 FROM ubuntu:18.04
-MAINTAINER Jerrico Gamis <jecklgamis@gmail.com>
+LABEL org.opencontainers.image.authors="Jerrico Gamis <jecklgamis@gmail.com>"
 
 RUN apt update -y && apt install -y curl dumb-init gnupg2
 RUN curl -L https://couchdb.apache.org/repo/bintray-pubkey.asc| apt-key add -
