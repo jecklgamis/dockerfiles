@@ -3,8 +3,8 @@ LABEL org.opencontainers.image.authors="Jerrico Gamis <jecklgamis@gmail.com>"
 
 RUN apt update -y && apt install -y curl && apt clean all && rm -rf /var/lib/apt/lists/*
 
-ENV PROMETHEUS_VERSION 2.41.0
-ENV PROMETHEUS_HOME /usr/local/prometheus-${PROMETHEUS_VERSION}.linux-amd64
+ENV PROMETHEUS_VERSION=3.4.2
+ENV PROMETHEUS_HOME=/usr/local/prometheus-${PROMETHEUS_VERSION}.linux-amd64
 
 RUN cd /usr/local && \
     curl  -H 'Cache-Control: no-cache'  -fLO  \
