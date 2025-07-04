@@ -6,3 +6,4 @@ run:
 	docker run -p 7080:7080  jecklgamis/wiremock:latest
 run-bash:
 	docker run -i -t jecklgamis/wiremock /bin/bash
+all: image run
