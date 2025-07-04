@@ -3,9 +3,9 @@ LABEL org.opencontainers.image.authors="Jerrico Gamis <jecklgamis@gmail.com>"
 
 RUN apt update -y && apt install -y curl build-essential && apt clean all
 
-ENV REDIS_PKG_NAME redis-7.0.7
+ENV REDIS_PKG_NAME=redis-8.0.2
 
-RUN cd /usr/local && curl -O http://download.redis.io/releases/$REDIS_PKG_NAME.tar.gz
+RUN cd /usr/local && curl -O https://download.redis.io/releases/$REDIS_PKG_NAME.tar.gz
 RUN cd /usr/local && tar xvf $REDIS_PKG_NAME.tar.gz && rm -f  $REDIS_PKG_NAME.tar.gz
 RUN ln -s /usr/local/$REDIS_PKG_NAME /usr/local/redis
 RUN cd /usr/local/redis && make
