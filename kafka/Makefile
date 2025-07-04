@@ -6,8 +6,9 @@ run:
 	docker run -p 9092:9092  jecklgamis/kafka:latest
 run-bash:
 	docker run -i -t jecklgamis/kafka /bin/bash
-login:
+exec-bash:
 	docker exec -it `docker ps | grep "jecklgamis/kafka" | awk '{print $$1}'` /bin/bash
+up: image run
 stack:
 	docker-compose down
 	docker-compose up
