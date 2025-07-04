@@ -1,9 +1,12 @@
 IMAGE_NAME=jecklgamis/grafana
+IMAGE_TAG:=latest
+
 default:
 	cat ./Makefile
 image:
-	docker build -t $(IMAGE_NAME):latest .
+	docker build -t $(IMAGE_NAME):$(IMAGE_TAG) .
 run:
-	docker run -p 3000:3000 -i -t  $(IMAGE_NAME):latest
+	docker run -p 3000:3000 -i -t  $(IMAGE_NAME):$(IMAGE_TAG)
 run-bash:
 	docker run -i -t  $(IMAGE_NAME) /bin/bash
+up: image run

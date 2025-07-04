@@ -3,15 +3,18 @@ LABEL org.opencontainers.image.authors="Jerrico Gamis <jecklgamis@gmail.com>"
 
 RUN apt update -y && apt install -y curl && apt clean all && rm -rf /var/lib/apt/lists/*
 
-ENV GRAFANA_PKG_NAME grafana-9.3.2
-RUN cd /usr/local && curl -L -O https://dl.grafana.com/oss/release/$GRAFANA_PKG_NAME.linux-amd64.tar.gz && \
-    tar xvf $GRAFANA_PKG_NAME.linux-amd64.tar.gz && rm -f $GRAFANA_PKG_NAME.linux-amd64.tar.gz
-RUN ln -s /usr/local/$GRAFANA_PKG_NAME /usr/local/grafana
+ENV GRAFANA_VERSION=12.0.2
+ENV GRAFANA_HOME=/grafana
+
+RUN cd / && curl -L -O https://dl.grafana.com/oss/release/grafana-${GRAFANA_VERSION}.linux-amd64.tar.gz && \
+    tar xvf grafana-${GRAFANA_VERSION}.linux-amd64.tar.gz && rm -f grafana-${GRAFANA_VERSION}.linux-amd64.tar.gz
+RUN ln -s /grafana-v$GRAFANA_VERSION $GRAFANA_HOME
 
 RUN groupadd -r grafana && useradd -r -ggrafana grafana
-RUN chown -R grafana:grafana /usr/local/grafana/bin
+RUN chown -R grafana:grafana $GRAFANA_HOME/bin
 
-COPY run-grafana.sh /usr/local/bin
-CMD ["/usr/local/bin/run-grafana.sh"]
+WORKDIR /grafana
+COPY docker-entrypoint.sh /
+CMD ["/docker-entrypoint.sh"]
 
 
