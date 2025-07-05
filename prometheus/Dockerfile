@@ -13,8 +13,8 @@ RUN cd /usr/local && \
     rm -f prometheus-${PROMETHEUS_VERSION}.linux-amd64.tar.gz
 
 COPY prometheus.yml ${PROMETHEUS_HOME}
-COPY run-prometheus.sh /usr/local/bin
+COPY docker-entrypoint.sh /
 
 WORKDIR ${PROMETHEUS_HOME}
-CMD ["/usr/local/bin/run-prometheus.sh"]
+ENTRYPOINT ["/docker-entrypoint.sh"]
 
