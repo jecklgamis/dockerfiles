@@ -8,3 +8,4 @@ run-bash:
 	docker run -i -t jecklgamis/kong:latest /bin/bash
 ssl-certs:
 	cd etc/kong/ssl && ./create-server-certs.sh
+up: image run

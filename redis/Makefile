@@ -6,3 +6,4 @@ run:
 	docker run -p 6379:6379 jecklgamis/redis:latest
 run-bash:
 	docker run -i -t jecklgamis/redis /bin/bash
+up: image run

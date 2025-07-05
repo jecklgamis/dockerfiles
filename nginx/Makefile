@@ -8,3 +8,4 @@ run-bash:
 	docker run -i -t jecklgamis/nginx:latest /bin/bash
 ssl-certs:
 	cd etc/nginx/ssl && ./create-server-certs.sh
+up: image run

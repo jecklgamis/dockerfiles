@@ -6,3 +6,4 @@ run:
 	docker run jecklgamis/logstash:latest
 run-bash:
 	docker run -i -t jecklgamis/logstash:latest /bin/bash
+up: image run

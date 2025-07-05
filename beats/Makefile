@@ -6,3 +6,4 @@ run:
 	docker run jecklgamis/beats:latest
 run-bash:
 	docker run -i -t jecklgamis/beats:latest /bin/bash
+up: image run
