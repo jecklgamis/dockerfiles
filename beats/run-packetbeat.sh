@@ -1,4 +1,4 @@
 #!/bin/bash
 set -ex
-cd /usr/local/packetbeat
+cd /packetbeat
 exec ./packetbeat -e -c packetbeat.yml

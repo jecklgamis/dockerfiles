@@ -1,5 +1,5 @@
 #!/bin/bash
 set -ex
-cd /usr/local/heartbeat
+cd /heartbeat
 exec ./heartbeat -e -c heartbeat.yml
 

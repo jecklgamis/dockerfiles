@@ -1,5 +1,5 @@
 #!/bin/bash
 set -ex
-cd /usr/local/filebeat
+cd /filebeat
 exec ./filebeat -e -c filebeat.yml
 

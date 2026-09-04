@@ -1,8 +1,12 @@
+IMAGE_NAME:=jecklgamis/kibana
+IMAGE_TAG:=latest
+
 default:
 	cat ./Makefile
 image:
-	docker build -t jecklgamis/kibana:latest .
+	docker build -t $(IMAGE_NAME):$(IMAGE_TAG) .
 run:
-	docker run -p 5601:5601 jecklgamis/kibana:latest
+	docker run -p 5601:5601 $(IMAGE_NAME):$(IMAGE_TAG)
 run-bash:
-	docker run -i -t jecklgamis/kibana:latest /bin/bash
+	docker run -i -t $(IMAGE_NAME):$(IMAGE_TAG) /bin/bash
+up: image run
